@@ -1,35 +1,32 @@
 <div>
-  <div>
-    @if (selected) {
-    <div *ngIf="selected">
-      <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
+  <div class="container-fluid">
+    <div class="col-6">
+        <table class="table">
+        <thead>
+            <tr>
+            <th class="h4">Id</th>
+            <th class="h4">director</th>
+            <th class="h4">Calificacion</th>
+            <th class="h4">Duracion (minutos)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies" style="cursor: pointer;">
+                <td (click)="onSelected(movie)">
+                    <dd>{{ movie.id }}</dd>
+                </td>
+                <td (click)="onSelected(movie)">
+                    <dd>{{ movie.director }}</dd>
+                </td>
+                <td (click)="onSelected(movie)">
+                    <dd>{{ movie.calificacion }}</dd>
+                </td>
+                <td (click)="onSelected(movie)">
+                    <dd>{{ movie.duracion_minutos }}</dd>
+                </td>
+            </tr>
+        </tbody>
+        </table>
     </div>
-    }
-    <table>
-      <thead>
-        <tr>
-          <th>Titulo</th>
-          <th>Imagen</th>
-          <th>Duracion en minutos</th>
-          <th>Director</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(movie of movies; track movie.id){
-        <tr (click)="onSelect(movie)">
-          <td>{{ movie.titulo }}</td>
-          <td>
-            <img
-              class="movie-img"
-              [src]="movie.poster"
-              alt="{{ movie.poster }}"
-            />
-          </td>
-          <td>{{ movie.duracion_minutos }} min</td>
-          <td>{{ movie.director }} </td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+</div>
 </div>
